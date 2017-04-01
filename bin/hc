@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+
+var path = require('../tools/path');
+var program = require('commander');
+var colors = require('colors');
+
+// console.log(process.argv);
+
+program
+  .version(require('../package.json').version)
+  .usage('<command> [options]')
+  .command('new', 'new a project seed')
+  .option('-vuejs, --vuejs', 'vuejs seed')
+  .option('-reactjs, --reactjs', 'reactjs seed')
+  .parse(process.argv);
+
+// console.log(program);
+
+// if (program.vuejs) {
+//   console.log('vuejs', program);
+// }
+
+// if (program.path) {
+//   console.log('path', program);
+// }

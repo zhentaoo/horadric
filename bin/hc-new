@@ -1,0 +1,64 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var child_process = require('child_process');
+var colors = require('colors');
+var DirTools = require('../tools/file.js').DirTools;
+
+program
+  .option('-vuejs, --vuejs', 'create vuejs seed')
+  .option('-reactjs, --reactjs', 'create reactjs seed')
+  .parse(process.argv);
+
+var args = program.args;
+var projectName = args[0];
+
+if (!projectName) {
+  console.log('please input a valid projectName'.red);
+  return;
+}
+
+console.log("kk-new args:", args);
+var dirList = DirTools.readDir(process.cwd());
+
+for (var k in dirList) {
+  if (dirList[k] == projectName) {
+    console.log(`the project ${projectName} is exist`.red);
+    return;
+  }
+}
+
+if (program.vuejs) {
+  download('vue');
+  return;
+}
+
+if (program.reactjs) {
+  download('react');
+  return;
+}
+
+function download(type) {
+  var download = child_process.spawn('git', ['clone', '--depth=1', 'https://github.com/zhentaoo/'+ type +'-seed', process.cwd()+'/'+projectName]);
+
+  console.log('start download ' + type + '-seed from https://github.com/zhentaoo/'+type+'-seed'.cyan);
+
+  download.stderr.on('data', (data) => {
+    console.log(data.toString().cyan);
+  });
+
+  download.stdout.on('data', (data) => {
+    console.log(data.toString().cyan);
+  });
+
+  download.on('close', (code) => {
+    if (code !== 0) {
+      console.log(`download process exited with code ${code}`);
+    } else {
+      child_process.spawn('rm', ['-rf', process.cwd()+'/'+projectName+'/.git']);
+      console.log(`new ${type} project ${projectName} success`.green);
+    }
+  });
+}
+
+console.log('please assign seed type: [hc new projectName --vuejs]'.cyan);
