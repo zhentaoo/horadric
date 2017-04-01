@@ -17,5 +17,5 @@ NodeJS脚手架工具，可以新建各种reactjs vuejs 项目seed
  - 运行项目 `npm start`
 
 #### update logs
-- v1.0.0 可以创建vuejs reactjs seed
+- v1.0.1 可以创建vuejs reactjs seed
 - v0.0.0 脚手架，项目搭建
