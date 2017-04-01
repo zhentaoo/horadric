@@ -1,5 +1,6 @@
 ### horadric (赫拉迪克，命名自暗黑中的史诗级道具)
-NodeJS脚手架工具，能新建各种框架seed
+NodeJS脚手架工具，可以新建各种reactjs vuejs 项目seed
+一个集成命令行工具，如果有其他实用的命令功能也会陆续加入
 
 #### Installation
 `npm install horadric -g`
@@ -16,4 +17,5 @@ NodeJS脚手架工具，能新建各种框架seed
  - 运行项目 `npm start`
 
 #### update logs
+- v1.0.0 可以创建vuejs reactjs seed
 - v0.0.0 脚手架，项目搭建
