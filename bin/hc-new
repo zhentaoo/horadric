@@ -18,7 +18,7 @@ if (!projectName) {
   return;
 }
 
-console.log("kk-new args:", args);
+console.log("hc-new args:", args);
 var dirList = DirTools.readDir(process.cwd());
 
 for (var k in dirList) {
@@ -29,6 +29,7 @@ for (var k in dirList) {
 }
 
 if (program.vuejs) {
+  console.log('hc-new vuejs');
   download('vue');
   return;
 }
@@ -38,10 +39,11 @@ if (program.reactjs) {
   return;
 }
 
-function download(type) {
-  var download = child_process.spawn('git', ['clone', '--depth=1', 'https://github.com/zhentaoo/'+ type +'-seed', process.cwd()+'/'+projectName]);
+console.log('please assign seed type: [hc new projectName --vuejs]'.cyan);
 
-  console.log('start download ' + type + '-seed from https://github.com/zhentaoo/'+type+'-seed'.cyan);
+function download(type) {
+  var download = child_process.spawn('git', ['clone', '--depth=1', `https://github.com/zhentaoo/${type}-seed`, process.cwd()+'/'+projectName]);
+  console.log(`start download ${type}-seed from https://github.com/zhentaoo/${type}-seed`.cyan);
 
   download.stderr.on('data', (data) => {
     console.log(data.toString().cyan);
@@ -60,5 +62,3 @@ function download(type) {
     }
   });
 }
-
-console.log('please assign seed type: [hc new projectName --vuejs]'.cyan);
