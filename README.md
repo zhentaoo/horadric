@@ -7,12 +7,12 @@ NodeJS脚手架工具，可以新建各种reactjs vuejs 项目seed
 
 #### Feature
 - hc -h
-- hc vue projectName (create vuejs project from https://github.com/zhentaoo/vue-seed)
-- hc react projectName (create react project from https://github.com/zhentaoo/react-seed)
+- hc new projectName --vuejs (create vuejs project from https://github.com/zhentaoo/vue-seed)
+- hc new projectName --reactjs (create react project from https://github.com/zhentaoo/react-seed)
 
 #### Example
  - npm全局安装: `npm install -g horadirc`
- - 进入你的工作目录，创建一个project: `hc vue vue-seed` (hc是horadirc提供的命令)
+ - 进入你的工作目录，创建一个project: `hc new vue-seed --vuejs` (hc是horadirc提供的命令)
  - 安装依赖: `npm install`(有些模块可能需要较高的权限)
  - 运行项目 `npm start`
 
